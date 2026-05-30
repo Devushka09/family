@@ -3,62 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🏠index.html </title>
+<title>🏠 Семейные дела</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#F9F8F6;color:#1A1916;min-height:100vh}
 .page{max-width:1100px;margin:0 auto;padding:1.5rem 1rem 3rem}
-.setup-wrap{max-width:480px;margin:5vh auto;padding:0 1rem}
+.sw{max-width:480px;margin:5vh auto;padding:0 1rem}
 .card{background:#fff;border:1px solid #E0DDD5;border-radius:14px;padding:1.75rem}
+.logo{font-size:42px;text-align:center;margin-bottom:.5rem}
 h1{font-size:20px;font-weight:700;text-align:center;margin-bottom:6px}
 .sub{font-size:13px;color:#7A7975;text-align:center;margin-bottom:1.5rem;line-height:1.6}
 .tabs{display:flex;border:1px solid #C8C5BC;border-radius:8px;overflow:hidden;margin-bottom:1.5rem}
-.tab{flex:1;padding:9px;font-size:13px;font-weight:600;cursor:pointer;background:#fff;border:none;color:#5F5E5A;transition:all .15s}
+.tab{flex:1;padding:9px;font-size:13px;font-weight:600;cursor:pointer;background:#fff;border:none;color:#5F5E5A}
 .tab.on{background:#1A1916;color:#fff}
 .steps{margin-bottom:1.25rem}
-.step{display:flex;gap:11px;margin-bottom:13px;align-items:flex-start}
-.sn{width:24px;height:24px;border-radius:50%;background:#1A1916;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.st{font-size:13px;font-weight:600;margin-bottom:2px}
+.step{display:flex;gap:11px;margin-bottom:14px;align-items:flex-start}
+.sn{width:26px;height:26px;border-radius:50%;background:#1A1916;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.st{font-size:13px;font-weight:600;margin-bottom:3px}
 .sd{font-size:12px;color:#5F5E5A;line-height:1.6}
-a.open-btn{display:inline-block;margin-top:5px;background:#1A1916;color:#fff;text-decoration:none;padding:5px 13px;border-radius:7px;font-size:12px;font-weight:600}
-a.open-btn:hover{background:#333}
+a.lnk{display:inline-block;margin-top:5px;background:#1A1916;color:#fff;text-decoration:none;padding:5px 13px;border-radius:7px;font-size:12px;font-weight:600}
+a.lnk:hover{background:#333}
+.tip{background:#F4F3EE;border-radius:7px;padding:8px 11px;font-size:12px;color:#5F5E5A;margin-top:6px;line-height:1.6;font-family:monospace}
 .fl{margin-bottom:11px}
 .fl label{font-size:12px;font-weight:600;color:#5F5E5A;display:block;margin-bottom:4px}
 .inp{width:100%;padding:10px 12px;border:1.5px solid #C8C5BC;border-radius:8px;font-size:13px;font-family:monospace;background:#fff;outline:none}
 .inp:focus{border-color:#185FA5;box-shadow:0 0 0 3px rgba(24,95,165,.1)}
-.btn{width:100%;padding:11px;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;border:none;margin-bottom:8px}
+.btn{width:100%;padding:11px;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;border:none;margin-bottom:8px;transition:background .15s}
 .btn-blk{background:#1A1916;color:#fff}
 .btn-blk:hover{background:#333}
 .btn-blk:disabled{background:#999;cursor:not-allowed}
-.btn-out{background:#fff;border:1.5px solid #C8C5BC !important;color:#1A1916}
-.btn-out:hover{background:#F4F3EE}
-.msg{padding:10px 13px;border-radius:8px;font-size:13px;margin-top:8px;display:none;line-height:1.5}
-.msg-err{background:#FAECE7;color:#922B21;border:1px solid #F5C4B3}
-.msg-ok{background:#EAF3DE;color:#2D6A12;border:1px solid #97C459}
-.msg-info{background:#E6F1FB;color:#185FA5;border:1px solid #93C5F5}
+.msg{padding:10px 13px;border-radius:8px;font-size:13px;margin-top:8px;line-height:1.5;display:none}
+.merr{background:#FAECE7;color:#922B21;border:1px solid #F5C4B3}
+.mok{background:#EAF3DE;color:#2D6A12;border:1px solid #97C459}
+.minf{background:#E6F1FB;color:#185FA5;border:1px solid #93C5F5}
 .code-box{background:#F4F3EE;border:1.5px dashed #C8C5BC;border-radius:10px;padding:14px;text-align:center;margin:12px 0}
-.code-val{font-size:12px;font-weight:600;color:#1A1916;font-family:monospace;word-break:break-all;line-height:1.8}
+.code-val{font-size:11px;font-weight:600;color:#1A1916;font-family:monospace;word-break:break-all;line-height:1.8}
 .copy-btn{background:#E6F1FB;color:#185FA5;border:none;border-radius:7px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer;margin-top:8px}
 .copy-btn:hover{background:#B3D7F5}
-
 /* MAIN */
 .topbar{display:flex;align-items:center;gap:8px;margin-bottom:1.25rem;flex-wrap:wrap}
-.topbar-title{font-size:16px;font-weight:700;flex:1}
-.sbadge{font-size:12px;padding:3px 10px;border-radius:99px;font-weight:500}
-.sb-ok{background:#EAF3DE;color:#2D6A12}
-.sb-ld{background:#E6F1FB;color:#185FA5}
-.sb-er{background:#FAECE7;color:#922B21}
+.tt{font-size:16px;font-weight:700;flex:1}
+.sbdg{font-size:12px;padding:3px 10px;border-radius:99px;font-weight:500}
+.sok{background:#EAF3DE;color:#2D6A12}.sld{background:#E6F1FB;color:#185FA5}.ser{background:#FAECE7;color:#922B21}
 .ibtn{height:33px;padding:0 11px;border-radius:7px;border:1px solid #C8C5BC;background:#fff;cursor:pointer;font-size:13px;color:#5F5E5A}
 .ibtn:hover{background:#F4F3EE}
-.spin{display:inline-block;animation:sp 1s linear infinite}
+.sp{display:inline-block;animation:sp 1s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
 .bw{position:relative}
 .bnum{position:absolute;top:-4px;right:-4px;background:#C0392B;color:#fff;font-size:10px;font-weight:700;min-width:17px;height:17px;border-radius:99px;display:flex;align-items:center;justify-content:center;pointer-events:none}
 .npan{position:absolute;right:0;top:40px;width:280px;background:#fff;border:1px solid #C8C5BC;border-radius:10px;z-index:100;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.12)}
 .npan-h{padding:9px 13px;font-size:13px;font-weight:700;border-bottom:1px solid #E8E6DE}
 .nls{max-height:220px;overflow-y:auto}
-.ni{padding:9px 13px;border-bottom:1px solid #E8E6DE;display:flex;gap:9px}
-.ni:last-child{border-bottom:none}
+.ni{padding:9px 13px;border-bottom:1px solid #E8E6DE;display:flex;gap:9px}.ni:last-child{border-bottom:none}
 .nd{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0}
 .nr{background:#C0392B}.na{background:#BA7517}.nb{background:#185FA5}
 .nt2{font-size:13px}.ns2{font-size:11px;color:#7A7975;margin-top:2px}
@@ -68,13 +64,12 @@ a.open-btn:hover{background:#333}
 .ne{padding:1.25rem;text-align:center;font-size:13px;color:#A09E9A}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.25rem}
 .stat{background:#fff;border:1px solid #E0DDD5;border-radius:10px;padding:.75rem 1rem}
-.slb{font-size:12px;color:#7A7975;margin-bottom:4px}
-.sv{font-size:22px;font-weight:700}
+.slb{font-size:12px;color:#7A7975;margin-bottom:4px}.sv{font-size:22px;font-weight:700}
 .fcard{background:#fff;border:1px solid #E0DDD5;border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.5rem}
 .fhd{display:flex;align-items:center;gap:8px;margin-bottom:11px}
 .fht{font-size:15px;font-weight:700;flex:1}
 .mbdg{font-size:12px;padding:3px 10px;border-radius:99px;font-weight:600}
-.mb-a{background:#EAF3DE;color:#2D6A12}.mb-e{background:#DCEEFB;color:#185FA5}
+.mba{background:#EAF3DE;color:#2D6A12}.mbe{background:#DCEEFB;color:#185FA5}
 .cbtn{font-size:12px;padding:4px 11px;border:1px solid #C8C5BC;border-radius:6px;background:transparent;cursor:pointer;color:#5F5E5A}
 .cbtn:hover{background:#F4F3EE}
 .hint{background:#F4F3EE;border-left:3px solid #C8C5BC;padding:8px 13px;margin-bottom:11px;font-size:12px;color:#5F5E5A;line-height:1.7;border-radius:0 6px 6px 0}
@@ -85,8 +80,7 @@ a.open-btn:hover{background:#333}
 input[type=text],input[type=date],input[type=time],select{padding:8px 10px;border:1px solid #C8C5BC;border-radius:8px;font-size:14px;font-family:inherit;background:#fff;color:#1A1916;width:100%;outline:none;-webkit-appearance:none}
 input:focus,select:focus{border-color:#185FA5;box-shadow:0 0 0 3px rgba(24,95,165,.1)}
 select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A7975' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px}
-.vrow{display:flex;gap:8px;align-items:center}
-.vrow input{flex:1}
+.vrow{display:flex;gap:8px;align-items:center}.vrow input{flex:1}
 .mic{width:36px;height:36px;border-radius:50%;border:1px solid #C8C5BC;background:#fff;cursor:pointer;font-size:17px;flex-shrink:0}
 .mic:hover{background:#F4F3EE}
 .mic.on{background:#FAECE7;border-color:#C0392B;animation:pulse 1s infinite}
@@ -100,11 +94,10 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 .rrow label{font-size:13px;color:#5F5E5A;white-space:nowrap}
 .rrow select,.rrow input[type=time]{width:auto}
 .brow{display:flex;gap:10px;margin-top:14px;align-items:center;flex-wrap:wrap}
-.bsave{background:#1A1916;border:none;border-radius:8px;padding:9px 22px;font-size:14px;cursor:pointer;color:#fff;font-weight:600}
-.bsave:hover{background:#333}
-.bsave:disabled{background:#999;cursor:not-allowed}
-.bexp{background:transparent;border:1px solid #C8C5BC;border-radius:8px;padding:9px 13px;font-size:13px;cursor:pointer;color:#5F5E5A;margin-left:auto}
-.bexp:hover{background:#F4F3EE}
+.bsv{background:#1A1916;border:none;border-radius:8px;padding:9px 22px;font-size:14px;cursor:pointer;color:#fff;font-weight:600}
+.bsv:hover{background:#333}.bsv:disabled{background:#999;cursor:not-allowed}
+.bex{background:transparent;border:1px solid #C8C5BC;border-radius:8px;padding:9px 13px;font-size:13px;cursor:pointer;color:#5F5E5A;margin-left:auto}
+.bex:hover{background:#F4F3EE}
 .filters{display:flex;gap:8px;margin-bottom:11px;flex-wrap:wrap;align-items:center}
 .filters label{font-size:13px;color:#5F5E5A;font-weight:600}
 .filters select{width:auto}
@@ -113,9 +106,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}
 th{text-align:left;padding:9px 12px;font-size:12px;font-weight:700;color:#5F5E5A;border-bottom:1px solid #E0DDD5;background:#F4F3EE}
 td{padding:9px 12px;border-bottom:1px solid #E8E6DE;color:#1A1916;vertical-align:middle;word-break:break-word}
 tr:last-child td{border-bottom:none}
-tr.re td{background:rgba(24,95,165,.05)}
-tr.ro td{background:rgba(192,57,43,.05)}
-tr.rt td{background:rgba(186,117,23,.07)}
+tr.re td{background:rgba(24,95,165,.05)}tr.ro td{background:rgba(192,57,43,.05)}tr.rt td{background:rgba(186,117,23,.07)}
 tr:hover td{background:#F9F8F6}
 .bdg{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11px;font-weight:700}
 .ph{background:#FAECE7;color:#922B21}.pm{background:#FEF3CD;color:#7D5A00}.pl{background:#EAF3DE;color:#2D6A12}
@@ -124,9 +115,9 @@ tr:hover td{background:#F9F8F6}
 .bd{background:#FAECE7;color:#922B21;border:none;border-radius:6px;padding:5px 10px;font-size:12px;cursor:pointer;font-weight:600;display:block;width:100%}
 .bd:hover{background:#F5C4B3}
 .ov{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:199}
-.dlg{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border:1px solid #C8C5BC;border-radius:13px;padding:1.5rem 1.75rem;z-index:200;min-width:270px;max-width:350px;box-shadow:0 10px 40px rgba(0,0,0,.18)}
+.dlg{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border:1px solid #C8C5BC;border-radius:13px;padding:1.5rem 1.75rem;z-index:200;min-width:270px;max-width:360px;box-shadow:0 10px 40px rgba(0,0,0,.18)}
 .dt{font-size:15px;font-weight:700;margin-bottom:8px}
-.db2{font-size:13px;color:#5F5E5A;margin-bottom:18px;line-height:1.6}
+.db{font-size:13px;color:#5F5E5A;margin-bottom:18px;line-height:1.6}
 .dbs{display:flex;gap:10px;justify-content:flex-end}
 .bno{background:transparent;border:1px solid #C8C5BC;border-radius:8px;padding:7px 16px;font-size:13px;cursor:pointer;color:#5F5E5A}
 .bno:hover{background:#F4F3EE}
@@ -143,82 +134,75 @@ tr:hover td{background:#F9F8F6}
 
 <!-- SETUP -->
 <div id="S">
-<div class="setup-wrap">
-<div class="card">
-  <div style="font-size:40px;text-align:center;margin-bottom:.5rem">🏠</div>
+<div class="sw"><div class="card">
+  <div class="logo">🏠</div>
   <h1>Семейные дела</h1>
-  <p class="sub">Общий список задач — синхронизируется на всех устройствах</p>
-
+  <p class="sub">Общий список для всей семьи — синхронизируется на всех устройствах</p>
   <div class="tabs">
-    <button class="tab on" id="t1" onclick="tab('create')">✦ Создать</button>
-    <button class="tab" id="t2" onclick="tab('join')">Войти по коду</button>
+    <button class="tab on" id="t1" onclick="tab('c')">✦ Создать</button>
+    <button class="tab" id="t2" onclick="tab('j')">Войти по коду</button>
   </div>
 
   <!-- СОЗДАТЬ -->
-  <div id="p-create">
+  <div id="pc">
     <div class="steps">
       <div class="step">
         <div class="sn">1</div>
         <div>
-          <div class="st">Зарегистрируйтесь на jsonbin.io</div>
-          <div class="sd">Бесплатно. Нужен e-mail и пароль.</div>
-          <a class="open-btn" href="https://jsonbin.io" target="_blank">Открыть jsonbin.io →</a>
+          <div class="st">Зарегистрируйтесь на GitHub</div>
+          <div class="sd">Бесплатно. Нужен только e-mail.</div>
+          <a class="lnk" href="https://github.com/join" target="_blank">Открыть GitHub →</a>
         </div>
       </div>
       <div class="step">
         <div class="sn">2</div>
         <div>
-          <div class="st">Скопируйте Master Key</div>
-          <div class="sd">Нажмите на иконку профиля (вверху справа) → <b>API Keys</b> → кнопка скопировать рядом с <b>Master Key</b></div>
+          <div class="st">Создайте токен</div>
+          <div class="sd">Перейдите по ссылке и нажмите <b>Generate new token (classic)</b>. В разделе <b>Select scopes</b> поставьте галочку <b>gist</b>. Нажмите <b>Generate token</b>. Скопируйте токен (начинается с <code>ghp_</code>).</div>
+          <a class="lnk" href="https://github.com/settings/tokens/new?scopes=gist&description=FamilyTasks" target="_blank">Создать токен →</a>
+          <div class="tip">⚠ Скопируйте токен сразу — GitHub покажет его только один раз!</div>
         </div>
       </div>
       <div class="step">
         <div class="sn">3</div>
-        <div>
-          <div class="st">Вставьте ключ сюда и нажмите кнопку</div>
-        </div>
+        <div><div class="st">Вставьте токен сюда</div></div>
       </div>
     </div>
-
     <div class="fl">
-      <label>Master Key (начинается с $2a$10$...)</label>
-      <input class="inp" id="akey" type="text" placeholder="$2a$10$..." autocomplete="off" />
+      <label>GitHub Token (начинается с ghp_)</label>
+      <input class="inp" id="akey" type="text" placeholder="ghp_..." autocomplete="off"/>
     </div>
-
     <button class="btn btn-blk" id="cbtn2" onclick="doCreate()">Создать семейное хранилище</button>
-
     <div class="msg" id="cmsg"></div>
-
-    <div id="cresult" style="display:none">
+    <div id="cres" style="display:none">
       <div class="code-box">
         <div style="font-size:12px;color:#7A7975;margin-bottom:4px">Код семьи — отправьте остальным:</div>
         <div class="code-val" id="ccode"></div>
         <button class="copy-btn" onclick="copyC('ccode')">📋 Скопировать код</button>
       </div>
-      <button class="btn btn-blk" onclick="go()">Войти в планировщик →</button>
+      <button class="btn btn-blk" style="margin-top:4px" onclick="go()">Войти в планировщик →</button>
     </div>
   </div>
 
   <!-- ВОЙТИ -->
-  <div id="p-join" style="display:none">
+  <div id="pj" style="display:none">
     <div class="fl">
       <label>Код семьи (прислал создатель)</label>
-      <input class="inp" id="jcode" type="text" placeholder="Вставьте код сюда..." />
+      <input class="inp" id="jcode" type="text" placeholder="Вставьте код..."/>
     </div>
     <button class="btn btn-blk" onclick="doJoin()">Подключиться</button>
     <div class="msg" id="jmsg"></div>
   </div>
 
-</div>
-</div>
+</div></div>
 </div>
 
 <!-- MAIN -->
 <div id="M" style="display:none">
 <div class="page">
   <div class="topbar">
-    <span class="topbar-title">🏠 Семейные дела</span>
-    <span class="sbadge sb-ld" id="sbdg">⏳ Загрузка...</span>
+    <span class="tt">🏠 Семейные дела</span>
+    <span class="sbdg sld" id="sbdg">⏳ Загрузка...</span>
     <button class="ibtn" id="rbtn" onclick="syncNow()">🔄</button>
     <button class="ibtn" onclick="showCode()">🔑 Код</button>
     <div class="bw" id="bw">
@@ -235,14 +219,14 @@ tr:hover td{background:#F9F8F6}
   <div class="fcard" id="fcard">
     <div class="fhd">
       <span class="fht" id="ftit">Новое дело</span>
-      <span class="mbdg mb-a" id="fbdg">Добавление</span>
+      <span class="mbdg mba" id="fbdg">Добавление</span>
       <button class="cbtn" id="cancbtn" style="display:none" onclick="cancelEdit()">✕ Отмена</button>
     </div>
-    <div class="hint" id="hint"><b>Добавить дело:</b> введите задачу (в Chrome/Edge можно 🎙 голосом), выберите поля, нажмите <b>Сохранить</b>.</div>
+    <div class="hint" id="hint"><b>Добавить дело:</b> введите задачу (в Chrome/Edge можно 🎙 голосом), заполните поля, нажмите <b>Сохранить</b>.</div>
     <div class="field">
       <label><span class="req">*</span> Задача</label>
       <div class="vrow">
-        <input type="text" id="ftask" placeholder="Например: оплатить квартплату..." />
+        <input type="text" id="ftask" placeholder="Например: оплатить квартплату..."/>
         <button class="mic" id="mbtn">🎙</button>
       </div>
       <div class="mn" id="mnote">🎙 Нажмите и говорите (Chrome / Edge)</div>
@@ -267,8 +251,8 @@ tr:hover td{background:#F9F8F6}
       <input type="time" id="rtime" value="09:00" style="width:88px"/>
     </div>
     <div class="brow">
-      <button class="bsave" id="savbtn" onclick="saveTask()">✔ <span id="slbl">Сохранить дело</span></button>
-      <button class="bexp" onclick="exportCSV()">⬇ Скачать CSV</button>
+      <button class="bsv" id="savbtn" onclick="saveTask()">✔ <span id="slbl">Сохранить дело</span></button>
+      <button class="bex" onclick="exportXLSX()">⬇ Скачать Excel</button>
     </div>
   </div>
   <div class="filters">
@@ -296,19 +280,16 @@ tr:hover td{background:#F9F8F6}
 <div class="ov" id="dov" style="display:none" onclick="cancelDel()"></div>
 <div class="dlg" id="ddlg" style="display:none">
   <div class="dt">Удалить это дело?</div>
-  <div class="db2" id="dname"></div>
-  <div class="dbs">
-    <button class="bno" onclick="cancelDel()">Отмена</button>
-    <button class="byes" onclick="confirmDel()">🗑 Удалить</button>
-  </div>
+  <div class="db" id="dname"></div>
+  <div class="dbs"><button class="bno" onclick="cancelDel()">Отмена</button><button class="byes" onclick="confirmDel()">🗑 Удалить</button></div>
 </div>
 
-<!-- Код семьи -->
+<!-- Код -->
 <div class="ov" id="cov" style="display:none" onclick="closeCode()"></div>
 <div class="dlg" id="cdlg" style="display:none">
   <div class="dt">🔑 Код семьи</div>
-  <div class="db2">
-    Отправьте этот код другим членам семьи:
+  <div class="db">
+    Отправьте этот код другим:
     <div class="code-box" style="margin-top:10px">
       <div class="code-val" id="cshow" style="font-size:11px"></div>
       <button class="copy-btn" onclick="copyC('cshow')">📋 Скопировать</button>
@@ -323,256 +304,241 @@ tr:hover td{background:#F9F8F6}
 <div class="toast" id="toast"></div>
 
 <script>
-// ─── JSONBin API ───────────────────────────────────
-const BASE = 'https://api.jsonbin.io/v3/b';
-let KEY = '', BIN = '';
+// ── GitHub Gist API ──────────────────────────────
+const GH = 'https://api.github.com/gists';
+let TOK = '', GID = '';
 
-async function apiCreate(key, body) {
-  const r = await fetch(BASE, {
+async function ghCreate(token, data) {
+  const r = await fetch(GH, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Master-Key': key,
-      'X-Bin-Name': 'FamilyTasks'
-    },
-    body: JSON.stringify(body)
+    headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github+json' },
+    body: JSON.stringify({ description: 'FamilyTasks', public: false, files: { 'tasks.json': { content: JSON.stringify(data) } } })
   });
-  const text = await r.text();
-  if (!r.ok) throw new Error('Сервер ответил: ' + r.status + ' — ' + text.slice(0, 120));
-  const j = JSON.parse(text);
-  return j.metadata.id;
+  const txt = await r.text();
+  if (!r.ok) throw new Error('GitHub: ' + r.status + ' — ' + txt.slice(0,100));
+  return JSON.parse(txt).id;
 }
 
-async function apiRead(key, id) {
-  const r = await fetch(BASE + '/' + id + '/latest', {
-    headers: { 'X-Master-Key': key }
+async function ghRead(token, id) {
+  const r = await fetch(GH + '/' + id, {
+    headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json' }
   });
   if (!r.ok) throw new Error('Чтение: ' + r.status);
   const j = await r.json();
-  return j.record;
+  return JSON.parse(j.files['tasks.json'].content);
 }
 
-async function apiWrite(key, id, body) {
-  const r = await fetch(BASE + '/' + id, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json', 'X-Master-Key': key },
-    body: JSON.stringify(body)
+async function ghWrite(token, id, data) {
+  const r = await fetch(GH + '/' + id, {
+    method: 'PATCH',
+    headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github+json' },
+    body: JSON.stringify({ files: { 'tasks.json': { content: JSON.stringify(data) } } })
   });
   if (!r.ok) throw new Error('Запись: ' + r.status);
 }
 
-// ─── SETUP ────────────────────────────────────────
-const LS = 'fam_jb2';
+// ── SETUP ────────────────────────────────────────
+const LS = 'fam_gh1';
 
 function tab(t) {
-  document.getElementById('p-create').style.display = t === 'create' ? '' : 'none';
-  document.getElementById('p-join').style.display   = t === 'join'   ? '' : 'none';
-  document.getElementById('t1').className = 'tab' + (t === 'create' ? ' on' : '');
-  document.getElementById('t2').className = 'tab' + (t === 'join'   ? ' on' : '');
+  document.getElementById('pc').style.display = t==='c' ? '' : 'none';
+  document.getElementById('pj').style.display = t==='j' ? '' : 'none';
+  document.getElementById('t1').className = 'tab' + (t==='c' ? ' on' : '');
+  document.getElementById('t2').className = 'tab' + (t==='j' ? ' on' : '');
 }
 
-function showMsg(id, text, type) {
+function showMsg(id, html, type) {
   const el = document.getElementById(id);
-  el.className = 'msg msg-' + type;
-  el.innerHTML = text;
+  el.className = 'msg m' + type;
+  el.innerHTML = html;
   el.style.display = 'block';
 }
 
 async function doCreate() {
   const key = document.getElementById('akey').value.trim();
   const btn = document.getElementById('cbtn2');
-  const mid = 'cmsg';
-  if (!key) { showMsg(mid, '⚠ Вставьте Master Key из jsonbin.io', 'err'); return; }
-  if (!key.startsWith('$')) { showMsg(mid, '⚠ Ключ должен начинаться с "$". Убедитесь что скопировали Master Key, не Access Key.', 'err'); return; }
-  btn.disabled = true;
-  btn.textContent = '⏳ Создаём хранилище...';
-  showMsg(mid, '⏳ Подключаемся к jsonbin.io...', 'info');
+  if (!key) { showMsg('cmsg', '⚠ Вставьте GitHub Token', 'err'); return; }
+  if (!key.startsWith('ghp_') && !key.startsWith('github_pat_')) {
+    showMsg('cmsg', '⚠ Токен должен начинаться с <b>ghp_</b>. Убедитесь, что скопировали правильный токен.', 'err'); return;
+  }
+  btn.disabled = true; btn.textContent = '⏳ Создаём...';
+  showMsg('cmsg', '⏳ Подключаемся к GitHub...', 'inf');
   try {
-    const id = await apiCreate(key, { tasks: [], v: 1 });
-    KEY = key; BIN = id;
-    localStorage.setItem(LS, JSON.stringify({ key, id }));
+    const id = await ghCreate(key, { tasks: [], v: 1 });
+    TOK = key; GID = id;
+    localStorage.setItem(LS, JSON.stringify({ tok: key, gid: id }));
     const code = btoa(unescape(encodeURIComponent(key + '|||' + id)));
     document.getElementById('ccode').textContent = code;
-    document.getElementById('cresult').style.display = '';
-    showMsg(mid, '✓ Хранилище создано! Скопируйте код ниже и отправьте семье.', 'ok');
+    document.getElementById('cres').style.display = '';
+    showMsg('cmsg', '✓ Хранилище создано! Скопируйте код ниже.', 'ok');
     btn.style.display = 'none';
-  } catch (e) {
-    showMsg(mid, '⚠ Ошибка: ' + e.message, 'err');
-    btn.disabled = false;
-    btn.textContent = 'Попробовать снова';
+  } catch(e) {
+    showMsg('cmsg', '⚠ Ошибка: ' + e.message, 'err');
+    btn.disabled = false; btn.textContent = 'Попробовать снова';
   }
 }
 
 async function doJoin() {
   const raw = document.getElementById('jcode').value.trim();
-  const mid = 'jmsg';
-  if (!raw) { showMsg(mid, '⚠ Вставьте код семьи', 'err'); return; }
-  showMsg(mid, '⏳ Проверяем код...', 'info');
+  if (!raw) { showMsg('jmsg', '⚠ Вставьте код семьи', 'err'); return; }
+  showMsg('jmsg', '⏳ Проверяем...', 'inf');
   try {
     const dec = decodeURIComponent(escape(atob(raw)));
-    const parts = dec.split('|||');
-    if (parts.length !== 2) throw new Error('Неверный формат кода');
-    const [key, id] = parts;
-    await apiRead(key, id);
-    KEY = key; BIN = id;
-    localStorage.setItem(LS, JSON.stringify({ key, id }));
+    const [tok, gid] = dec.split('|||');
+    if (!tok || !gid) throw new Error('Неверный формат кода');
+    await ghRead(tok, gid);
+    TOK = tok; GID = gid;
+    localStorage.setItem(LS, JSON.stringify({ tok, gid }));
     go();
-  } catch (e) {
-    showMsg(mid, '⚠ Не удалось подключиться: ' + e.message, 'err');
+  } catch(e) {
+    showMsg('jmsg', '⚠ ' + e.message, 'err');
   }
 }
 
-function copyC(elId) {
-  const txt = document.getElementById(elId).textContent;
+function copyC(id) {
+  const txt = document.getElementById(id).textContent;
   if (navigator.clipboard) {
-    navigator.clipboard.writeText(txt).then(() => toast2('Скопировано!', 'tin')).catch(() => fallbackCopy(txt));
-  } else { fallbackCopy(txt); }
+    navigator.clipboard.writeText(txt).then(() => showToast('Скопировано!', 'tin')).catch(() => fbCopy(txt));
+  } else fbCopy(txt);
 }
-function fallbackCopy(txt) {
-  const ta = document.createElement('textarea'); ta.value = txt;
-  document.body.appendChild(ta); ta.select(); document.execCommand('copy');
-  document.body.removeChild(ta); toast2('Скопировано!', 'tin');
+function fbCopy(txt) {
+  const t = document.createElement('textarea'); t.value = txt;
+  document.body.appendChild(t); t.select(); document.execCommand('copy');
+  document.body.removeChild(t); showToast('Скопировано!', 'tin');
 }
 
 function go() {
   document.getElementById('S').style.display = 'none';
   document.getElementById('M').style.display = '';
-  document.getElementById('cshow').textContent = btoa(unescape(encodeURIComponent(KEY + '|||' + BIN)));
+  document.getElementById('cshow').textContent = btoa(unescape(encodeURIComponent(TOK + '|||' + GID)));
   initApp();
 }
 
-function resetApp() { if (confirm('Отключиться от текущего хранилища?')) { localStorage.removeItem(LS); location.reload(); } }
+function resetApp() { if(confirm('Отключиться?')) { localStorage.removeItem(LS); location.reload(); } }
 
 window.addEventListener('DOMContentLoaded', () => {
   try {
     const s = JSON.parse(localStorage.getItem(LS) || 'null');
-    if (s && s.key && s.id) { KEY = s.key; BIN = s.id; go(); }
-  } catch (e) {}
+    if (s && s.tok && s.gid) { TOK = s.tok; GID = s.gid; go(); }
+  } catch(e) {}
 });
 
-// ─── ПРИЛОЖЕНИЕ ───────────────────────────────────
-let tasks = [], nid = 1, editId = null, delId = null, syncing = false, timer = null;
-const T0 = new Date(); T0.setHours(0,0,0,0);
-const dd = s => { if(!s)return null; const d=new Date(s);d.setHours(0,0,0,0);return Math.round((d-T0)/86400000); };
-const fd = s => { if(!s)return'—';const[y,m,d]=s.split('-');return d+'.'+m+'.'+y; };
-const esc = s => (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+// ── ПРИЛОЖЕНИЕ ───────────────────────────────────
+let tasks=[], nid=1, editId=null, delId=null, saving=false, tmr=null;
+const T0=new Date(); T0.setHours(0,0,0,0);
+const dd=s=>{if(!s)return null;const d=new Date(s);d.setHours(0,0,0,0);return Math.round((d-T0)/86400000);};
+const fd=s=>{if(!s)return'—';const[y,m,d]=s.split('-');return d+'.'+m+'.'+y;};
+const esc=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 
-function setBdg(cls, txt) { const b=document.getElementById('sbdg'); b.className='sbadge '+cls; b.textContent=txt; }
+function setBdg(cls,txt){const b=document.getElementById('sbdg');b.className='sbdg '+cls;b.textContent=txt;}
 
-async function syncNow() {
-  setBdg('sb-ld','⏳ Синхронизация...');
-  const rb = document.getElementById('rbtn'); rb.innerHTML='<span class="spin">🔄</span>';
+async function syncNow(){
+  setBdg('sld','⏳ Синхронизация...');
+  const rb=document.getElementById('rbtn'); rb.innerHTML='<span class="sp">🔄</span>';
   try {
-    const data = await apiRead(KEY, BIN);
-    const fresh = data.tasks || [];
-    if (JSON.stringify(fresh) !== JSON.stringify(tasks)) {
-      tasks = fresh; nid = tasks.length ? Math.max(...tasks.map(t=>t.id))+1 : 1; render();
-    }
-    const t=new Date(), hm=String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0');
-    setBdg('sb-ok','☁ '+hm);
-  } catch(e) { setBdg('sb-er','⚠ Нет связи'); }
+    const data=await ghRead(TOK,GID);
+    const fresh=data.tasks||[];
+    if(JSON.stringify(fresh)!==JSON.stringify(tasks)){tasks=fresh;nid=tasks.length?Math.max(...tasks.map(t=>t.id))+1:1;render();}
+    const t=new Date(),hm=String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0');
+    setBdg('sok','☁ '+hm);
+  } catch(e){setBdg('ser','⚠ Нет связи');}
   rb.textContent='🔄';
 }
 
-async function saveCloud() {
-  if(syncing)return; syncing=true;
-  setBdg('sb-ld','⏳ Сохранение...');
+async function saveCloud(){
+  if(saving)return; saving=true;
+  setBdg('sld','⏳ Сохранение...');
   try {
-    await apiWrite(KEY, BIN, { tasks, v:1 });
-    const t=new Date(), hm=String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0');
-    setBdg('sb-ok','☁ '+hm);
-  } catch(e) { setBdg('sb-er','⚠ Ошибка'); toast2('Не удалось сохранить','ter'); }
-  syncing=false;
+    await ghWrite(TOK,GID,{tasks,v:1});
+    const t=new Date(),hm=String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0');
+    setBdg('sok','☁ '+hm);
+  } catch(e){setBdg('ser','⚠ Ошибка');showToast('Не удалось сохранить','ter');}
+  saving=false;
 }
 
-function initApp() {
-  syncNow();
-  if(timer) clearInterval(timer);
-  timer = setInterval(syncNow, 20000);
-  initMic();
-}
+function initApp(){syncNow();if(tmr)clearInterval(tmr);tmr=setInterval(syncNow,20000);initMic();}
 
-function render() {
+function render(){
   const fc=document.getElementById('fc2')?.value||'',fp=document.getElementById('fp2')?.value||'',fs=document.getElementById('fs2')?.value||'';
   const list=tasks.filter(t=>(!fc||t.cat===fc)&&(!fp||t.pri===fp)&&(!fs||t.status===fs));
   const pc={'🔴 Высокий':'ph','🟡 Средний':'pm','🟢 Низкий':'pl'};
-  const body=document.getElementById('tbody'); if(!body)return;
-  if(!list.length){body.innerHTML='<tr><td colspan="8" style="text-align:center;padding:2rem;color:#A09E9A">Нет дел — отдыхаем 🎉</td></tr>';updStats();renderN();return;}
+  const body=document.getElementById('tbody');if(!body)return;
+  if(!list.length){body.innerHTML='<tr><td colspan="8" style="text-align:center;padding:2rem;color:#A09E9A">Нет дел — отдыхаем 🎉</td></tr>';updS();renderN();return;}
   body.innerHTML=list.map(t=>{
-    const diff=dd(t.date); let rc=t.id===editId?'re':'';
+    const diff=dd(t.date);let rc=t.id===editId?'re':'';
     if(!rc&&t.date&&t.status!=='Выполнено'){if(diff<0)rc='ro';else if(diff===0)rc='rt';}
     let dl=fd(t.date);
     if(t.date&&t.status!=='Выполнено'){if(diff<0)dl+='<br><span style="color:#922B21;font-size:11px;font-weight:700">⚠ просрочено</span>';else if(diff===0)dl+='<br><span style="color:#7D5A00;font-size:11px;font-weight:700">⏰ сегодня!</span>';}
     const pl=t.pri.replace('🔴 ','').replace('🟡 ','').replace('🟢 ','');
     return`<tr class="${rc}"><td>${esc(t.task)}</td><td>${t.cat}</td><td><span class="bdg ${pc[t.pri]||''}">${pl}</span></td><td>${dl}</td><td>${esc(t.who)||'—'}</td><td><select style="font-size:12px;padding:3px 5px;border:1px solid #C8C5BC;border-radius:6px;background:#fff;width:100%" onchange="chSt(${t.id},this.value)">${['Ожидает','В работе','Выполнено'].map(s=>`<option${t.status===s?' selected':''}>${s}</option>`).join('')}</select></td><td style="font-size:12px;color:#5F5E5A">${esc(t.notes)}</td><td><button class="be" onclick="startEdit(${t.id})">✏ Изменить</button><button class="bd" onclick="askDel(${t.id})">🗑 Удалить</button></td></tr>`;
   }).join('');
-  updStats(); renderN();
+  updS();renderN();
 }
 
-function updStats(){
+function updS(){
   const tot=tasks.length,done=tasks.filter(t=>t.status==='Выполнено').length,inp=tasks.filter(t=>t.status==='В работе').length,ov=tasks.filter(t=>t.date&&t.status!=='Выполнено'&&dd(t.date)<0).length;
   const el=document.getElementById('stats');if(!el)return;
   el.innerHTML=`<div class="stat"><div class="slb">Всего дел</div><div class="sv">${tot}</div></div><div class="stat"><div class="slb">В работе</div><div class="sv" style="color:#185FA5">${inp}</div></div><div class="stat"><div class="slb">Выполнено</div><div class="sv" style="color:#2D6A12">${done}</div></div><div class="stat"><div class="slb">Просрочено</div><div class="sv" style="color:${ov>0?'#922B21':'#1A1916'}">${ov}</div></div>`;
 }
 
 function gv(){return{task:document.getElementById('ftask').value.trim(),cat:document.getElementById('fcat').value,pri:document.getElementById('fpri').value,date:document.getElementById('fdate').value,who:document.getElementById('fwho').value.trim(),notes:document.getElementById('fnotes').value.trim(),rb:parseInt(document.getElementById('rbef').value),rt:document.getElementById('rtime').value};}
-function clr(){['ftask','fwho','fnotes','fdate'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});const d={fcat:'🏠 Дом',fpri:'🟡 Средний',rbef:'1',rtime:'09:00'};Object.entries(d).forEach(([id,v])=>{const e=document.getElementById(id);if(e)e.value=v;});}
+function clr(){['ftask','fwho','fnotes','fdate'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});Object.entries({fcat:'🏠 Дом',fpri:'🟡 Средний',rbef:'1',rtime:'09:00'}).forEach(([id,v])=>{const e=document.getElementById(id);if(e)e.value=v;});}
 
 async function saveTask(){
   const v=gv();if(!v.task){alert('Введите название задачи!');return;}
   const btn=document.getElementById('savbtn');btn.disabled=true;
-  if(editId!==null){const t=tasks.find(t=>t.id===editId);if(t)Object.assign(t,v);editId=null;setMode('add');}
+  if(editId!==null){const t=tasks.find(t=>t.id===editId);if(t)Object.assign(t,v);editId=null;setMode('a');}
   else tasks.push({id:nid++,status:'Ожидает',...v});
-  clr();render();await saveCloud();toast2('✓ Сохранено','tok');btn.disabled=false;
+  clr();render();await saveCloud();showToast('✓ Сохранено','tok');btn.disabled=false;
 }
 
 function startEdit(id){
   const t=tasks.find(t=>t.id===id);if(!t)return;editId=id;
   ['ftask','fcat','fpri','fdate','fwho','fnotes'].forEach((fid,i)=>{const e=document.getElementById(fid);if(e)e.value=[t.task,t.cat,t.pri,t.date||'',t.who||'',t.notes||''][i];});
   document.getElementById('rbef').value=t.rb??1;document.getElementById('rtime').value=t.rt||'09:00';
-  setMode('edit');document.getElementById('fcard').scrollIntoView({behavior:'smooth',block:'start'});setTimeout(()=>document.getElementById('ftask').focus(),350);render();
+  setMode('e');document.getElementById('fcard').scrollIntoView({behavior:'smooth',block:'start'});setTimeout(()=>document.getElementById('ftask').focus(),350);render();
 }
-function cancelEdit(){editId=null;clr();setMode('add');render();}
+function cancelEdit(){editId=null;clr();setMode('a');render();}
 function setMode(m){
-  const e=m==='edit';
+  const e=m==='e';
   document.getElementById('ftit').textContent=e?'Редактирование дела':'Новое дело';
   document.getElementById('fbdg').textContent=e?'Редактирование':'Добавление';
-  document.getElementById('fbdg').className='mbdg '+(e?'mb-e':'mb-a');
+  document.getElementById('fbdg').className='mbdg '+(e?'mbe':'mba');
   document.getElementById('cancbtn').style.display=e?'':'none';
   document.getElementById('slbl').textContent=e?'Сохранить изменения':'Сохранить дело';
   document.getElementById('hint').innerHTML=e?'<b>Редактирование:</b> измените поля, нажмите <b>Сохранить изменения</b>. <b>✕ Отмена</b> — выйти без изменений.'
-    :'<b>Добавить дело:</b> введите задачу (в Chrome/Edge можно 🎙 голосом), выберите поля, нажмите <b>Сохранить</b>.';
+    :'<b>Добавить дело:</b> введите задачу (в Chrome/Edge можно 🎙 голосом), заполните поля, нажмите <b>Сохранить</b>.';
 }
 function askDel(id){delId=id;const t=tasks.find(t=>t.id===id);document.getElementById('dname').textContent=t?'«'+t.task+'»':'';document.getElementById('dov').style.display='';document.getElementById('ddlg').style.display='';}
 function cancelDel(){delId=null;document.getElementById('dov').style.display='none';document.getElementById('ddlg').style.display='none';}
-async function confirmDel(){tasks=tasks.filter(t=>t.id!==delId);if(editId===delId){editId=null;clr();setMode('add');}cancelDel();render();await saveCloud();toast2('Удалено','tok');}
-async function chSt(id,v){const t=tasks.find(t=>t.id===id);if(t){t.status=v;await saveCloud();}updStats();renderN();}
+async function confirmDel(){tasks=tasks.filter(t=>t.id!==delId);if(editId===delId){editId=null;clr();setMode('a');}cancelDel();render();await saveCloud();showToast('Удалено','tok');}
+async function chSt(id,v){const t=tasks.find(t=>t.id===id);if(t){t.status=v;await saveCloud();}updS();renderN();}
 function showCode(){document.getElementById('cov').style.display='';document.getElementById('cdlg').style.display='';}
 function closeCode(){document.getElementById('cov').style.display='none';document.getElementById('cdlg').style.display='none';}
 
-function exportCSV(){
-  const BOM='\uFEFF',h=['Задача','Категория','Приоритет','Срок','Кто','Статус','Заметки'];
-  const rows=tasks.map(t=>[t.task,t.cat,t.pri.replace('🔴 ','').replace('🟡 ','').replace('🟢 ',''),fd(t.date),t.who,t.status,t.notes]);
-  const csv=BOM+[h,...rows].map(r=>r.map(c=>'"'+String(c||'').replace(/"/g,'""')+'"').join(';')).join('\r\n');
-  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));a.download='семейные_дела.csv';a.click();
+function exportXLSX(){
+  const h=['Задача','Категория','Приоритет','Срок','Кто','Статус','Заметки'];
+  const rows=tasks.map(t=>[t.task,t.cat,t.pri.replace('🔴 ','').replace('🟡 ','').replace('🟢 ',''),fd(t.date),t.who||'',t.status,t.notes||'']);
+  downloadXLSX([h,...rows],'семейные_дела.xlsx','Дела семьи');
+}));a.download='семейные_дела.csv';a.click();
 }
 
 let nOpen=false;
 function toggleN(){nOpen=!nOpen;document.getElementById('npan').style.display=nOpen?'block':'none';if(nOpen)renderN();}
 document.addEventListener('click',e=>{if(nOpen&&!e.target.closest('#bw')){nOpen=false;document.getElementById('npan').style.display='none';}});
 function renderN(){
-  const nn=[];tasks.forEach(t=>{if(t.status==='Выполнено'||!t.date)return;const d=dd(t.date);if(d<0)nn.push({type:'o',task:t.task,diff:d});else if(d===0)nn.push({type:'t',task:t.task,diff:d});else if(d<=2)nn.push({type:'s',task:t.task,diff:d});});
-  nn.sort((a,b)=>a.diff-b.diff);const urg=nn.filter(n=>n.type==='o'||n.type==='t').length;
+  const nn=[];tasks.forEach(t=>{if(t.status==='Выполнено'||!t.date)return;const d=dd(t.date);if(d<0)nn.push({tp:'o',task:t.task,diff:d});else if(d===0)nn.push({tp:'t',task:t.task,diff:d});else if(d<=2)nn.push({tp:'s',task:t.task,diff:d});});
+  nn.sort((a,b)=>a.diff-b.diff);const urg=nn.filter(n=>n.tp==='o'||n.tp==='t').length;
   const b=document.getElementById('bnum');b.style.display=urg>0?'flex':'none';b.textContent=urg;
   const nl=document.getElementById('nls');if(!nl)return;
   if(!nn.length){nl.innerHTML='<div class="ne">Всё в порядке 🎉</div>';updP();return;}
-  nl.innerHTML=nn.map(n=>{const dot=n.type==='o'?'nr':n.type==='t'?'na':'nb';const lbl=n.type==='o'?`Просрочено на ${Math.abs(n.diff)} дн.`:n.type==='t'?'Срок сегодня!':`Осталось ${n.diff} дн.`;return`<div class="ni"><div class="nd ${dot}"></div><div><div class="nt2">${esc(n.task)}</div><div class="ns2">${lbl}</div></div></div>`;}).join('');
+  nl.innerHTML=nn.map(n=>{const dot=n.tp==='o'?'nr':n.tp==='t'?'na':'nb';const lbl=n.tp==='o'?`Просрочено на ${Math.abs(n.diff)} дн.`:n.tp==='t'?'Срок сегодня!':`Осталось ${n.diff} дн.`;return`<div class="ni"><div class="nd ${dot}"></div><div><div class="nt2">${esc(n.task)}</div><div class="ns2">${lbl}</div></div></div>`;}).join('');
   updP();
 }
 function updP(){const btn=document.getElementById('pbtn'),lbl=document.getElementById('plbl');if(!btn)return;if(!('Notification'in window)){lbl.textContent='Недоступно';btn.style.display='none';return;}if(Notification.permission==='granted'){lbl.textContent='Включены ✓';btn.style.display='none';}else if(Notification.permission==='denied'){lbl.textContent='Заблокированы';btn.style.display='none';}else{lbl.textContent='Разрешить';btn.style.display='';}}
 function askP(){if(!('Notification'in window))return;Notification.requestPermission().then(()=>updP());}
 
-function toast2(msg,cls){const el=document.getElementById('toast');el.textContent=msg;el.className='toast '+cls;el.style.display='block';clearTimeout(el._t);el._t=setTimeout(()=>el.style.display='none',2500);}
+function showToast(msg,cls){const el=document.getElementById('toast');el.textContent=msg;el.className='toast '+cls;el.style.display='block';clearTimeout(el._t);el._t=setTimeout(()=>el.style.display='none',2500);}
 
 function initMic(){
   const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
@@ -585,6 +551,81 @@ function initMic(){
   rec.onerror=()=>rec.onend();
   mb.onclick=()=>{if(lis){rec.stop();return;}rec.start();lis=true;mb.classList.add('on');mn.textContent='🔴 Слушаю... говорите!';mn.classList.add('on');};
 }
+// Минимальный XLSX writer без внешних зависимостей
+function makeXLSX(rows, sheetName) {
+  var ss = [], sm = {};
+  function si(v) { v = String(v||''); if(sm[v]===undefined){sm[v]=ss.length;ss.push(v);} return sm[v]; }
+  function ex(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  var rowsXml = rows.map(function(row,ri){
+    return '<row r="'+(ri+1)+'">'+row.map(function(cell,ci){
+      var col=ci<26?String.fromCharCode(65+ci):'A'+String.fromCharCode(65+ci-26);
+      var ref=col+(ri+1);
+      if(cell===null||cell===undefined||cell==='') return '<c r="'+ref+'"/>';
+      if(typeof cell==='number') return '<c r="'+ref+'" t="n"><v>'+cell+'</v></c>';
+      return '<c r="'+ref+'" t="s"><v>'+si(cell)+'</v></c>';
+    }).join('')+'</row>';
+  }).join('');
+  var files = {
+    '[Content_Types].xml':'<?xml version="1.0" encoding="UTF-8"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/sharedStrings.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sharedStrings+xml"/></Types>',
+    '_rels/.rels':'<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>',
+    'xl/workbook.xml':'<?xml version="1.0" encoding="UTF-8"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="'+ex(sheetName||'Лист1')+'" sheetId="1" r:id="rId1"/></sheets></workbook>',
+    'xl/_rels/workbook.xml.rels':'<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/sharedStrings" Target="sharedStrings.xml"/></Relationships>',
+    'xl/worksheets/sheet1.xml':'<?xml version="1.0" encoding="UTF-8"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetData>'+rowsXml+'</sheetData></worksheet>',
+    'xl/sharedStrings.xml':'<?xml version="1.0" encoding="UTF-8"?><sst xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" count="'+ss.length+'" uniqueCount="'+ss.length+'">'+ss.map(function(s){return'<si><t xml:space="preserve">'+ex(s)+'</t></si>';}).join('')+'</sst>'
+  };
+  // Build ZIP (STORE method - no compression)
+  var parts = [], cd = [], offset = 0;
+  function str2buf(s) {
+    var b = new Uint8Array(s.length*3), n = 0;
+    for(var i=0;i<s.length;i++){
+      var c=s.charCodeAt(i);
+      if(c<128){b[n++]=c;}
+      else if(c<2048){b[n++]=192|(c>>6);b[n++]=128|(c&63);}
+      else{b[n++]=224|(c>>12);b[n++]=128|((c>>6)&63);b[n++]=128|(c&63);}
+    }
+    return b.slice(0,n);
+  }
+  function u16(v){return[v&255,(v>>8)&255];}
+  function u32(v){return[v&255,(v>>8)&255,(v>>16)&255,(v>>24)&255];}
+  function crc32(buf){
+    var t=new Int32Array(256);
+    for(var i=0;i<256;i++){var c=i;for(var j=0;j<8;j++)c=c&1?(0xEDB88320^(c>>>1)):c>>>1;t[i]=c;}
+    var c=-1;for(var i=0;i<buf.length;i++)c=t[(c^buf[i])&255]^(c>>>8);
+    return(c^-1)>>>0;
+  }
+  Object.keys(files).forEach(function(name){
+    var nb = str2buf(name), db = str2buf(files[name]);
+    var crc = crc32(db), sz = db.length;
+    var lh = [80,75,3,4,20,0,0,0,0,0,0,0,0,0].concat(u32(crc)).concat(u32(sz)).concat(u32(sz)).concat(u16(nb.length)).concat(u16(0));
+    cd.push({name:nb,crc:crc,sz:sz,offset:offset});
+    parts.push(new Uint8Array(lh),nb,db);
+    offset+=lh.length+nb.length+db.length;
+  });
+  var cdOffset=offset;
+  cd.forEach(function(e){
+    var r=[80,75,1,2,20,0,20,0,0,0,0,0,0,0,0,0].concat(u32(e.crc)).concat(u32(e.sz)).concat(u32(e.sz)).concat(u16(e.name.length)).concat(u16(0)).concat(u16(0)).concat(u16(0)).concat(u16(0)).concat(u16(0)).concat(u32(0)).concat(u32(e.offset));
+    parts.push(new Uint8Array(r),e.name);
+  });
+  var cdSize=offset-cdOffset+cd.reduce(function(a,e){return a+46+e.name.length;},0)-offset+offset;
+  // End of central directory
+  var cdSz=0;cd.forEach(function(e){cdSz+=46+e.name.length;});
+  var eocd=[80,75,5,6,0,0,0,0].concat(u16(cd.length)).concat(u16(cd.length)).concat(u32(cdSz)).concat(u32(cdOffset)).concat(u16(0));
+  parts.push(new Uint8Array(eocd));
+  var total=0;parts.forEach(function(p){total+=p.length;});
+  var out=new Uint8Array(total),pos=0;
+  parts.forEach(function(p){out.set(p,pos);pos+=p.length;});
+  return out;
+}
+function downloadXLSX(rows, filename, sheetName) {
+  var buf = makeXLSX(rows, sheetName);
+  var blob = new Blob([buf], {type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename || 'data.xlsx';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
 </script>
 </body>
 </html>
