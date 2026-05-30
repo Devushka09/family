@@ -517,10 +517,9 @@ function showCode(){document.getElementById('cov').style.display='';document.get
 function closeCode(){document.getElementById('cov').style.display='none';document.getElementById('cdlg').style.display='none';}
 
 function exportXLSX(){
-  const h=['Задача','Категория','Приоритет','Срок','Кто','Статус','Заметки'];
-  const rows=tasks.map(t=>[t.task,t.cat,t.pri.replace('🔴 ','').replace('🟡 ','').replace('🟢 ',''),fd(t.date),t.who||'',t.status,t.notes||'']);
-  downloadXLSX([h,...rows],'семейные_дела.xlsx','Дела семьи');
-}));a.download='семейные_дела.csv';a.click();
+  var h=['Задача','Категория','Приоритет','Срок','Кто','Статус','Заметки'];
+  var rows=tasks.map(function(t){return[t.task,t.cat,t.pri.replace('🔴 ','').replace('🟡 ','').replace('🟢 ',''),fd(t.date),t.who||'',t.status,t.notes||''];});
+  downloadXLSX([h].concat(rows),'семейные_дела.xlsx','Дела семьи');
 }
 
 let nOpen=false;
@@ -551,79 +550,61 @@ function initMic(){
   rec.onerror=()=>rec.onend();
   mb.onclick=()=>{if(lis){rec.stop();return;}rec.start();lis=true;mb.classList.add('on');mn.textContent='🔴 Слушаю... говорите!';mn.classList.add('on');};
 }
-// Минимальный XLSX writer без внешних зависимостей
-function makeXLSX(rows, sheetName) {
-  var ss = [], sm = {};
-  function si(v) { v = String(v||''); if(sm[v]===undefined){sm[v]=ss.length;ss.push(v);} return sm[v]; }
-  function ex(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-  var rowsXml = rows.map(function(row,ri){
-    return '<row r="'+(ri+1)+'">'+row.map(function(cell,ci){
-      var col=ci<26?String.fromCharCode(65+ci):'A'+String.fromCharCode(65+ci-26);
+
+// ── Встроенный XLSX writer (без внешних зависимостей) ──────
+function makeXLSX(rows,sname){
+  var ss=[],sm={};
+  function si(v){v=String(v===null||v===undefined?'':v);if(sm[v]===undefined){sm[v]=ss.length;ss.push(v);}return sm[v];}
+  function ex(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  var rowsXml=rows.map(function(row,ri){
+    return'<row r="'+(ri+1)+'">'+row.map(function(cell,ci){
+      var col=ci<26?String.fromCharCode(65+ci):String.fromCharCode(64+Math.floor(ci/26))+String.fromCharCode(65+(ci%26));
       var ref=col+(ri+1);
-      if(cell===null||cell===undefined||cell==='') return '<c r="'+ref+'"/>';
-      if(typeof cell==='number') return '<c r="'+ref+'" t="n"><v>'+cell+'</v></c>';
-      return '<c r="'+ref+'" t="s"><v>'+si(cell)+'</v></c>';
+      if(cell===null||cell===undefined||cell==='')return'<c r="'+ref+'"/>';
+      if(typeof cell==='number')return'<c r="'+ref+'" t="n"><v>'+cell+'</v></c>';
+      return'<c r="'+ref+'" t="s"><v>'+si(cell)+'</v></c>';
     }).join('')+'</row>';
   }).join('');
-  var files = {
+  var files={
     '[Content_Types].xml':'<?xml version="1.0" encoding="UTF-8"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/sharedStrings.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sharedStrings+xml"/></Types>',
     '_rels/.rels':'<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>',
-    'xl/workbook.xml':'<?xml version="1.0" encoding="UTF-8"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="'+ex(sheetName||'Лист1')+'" sheetId="1" r:id="rId1"/></sheets></workbook>',
+    'xl/workbook.xml':'<?xml version="1.0" encoding="UTF-8"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="'+ex(sname||'Лист1')+'" sheetId="1" r:id="rId1"/></sheets></workbook>',
     'xl/_rels/workbook.xml.rels':'<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/sharedStrings" Target="sharedStrings.xml"/></Relationships>',
     'xl/worksheets/sheet1.xml':'<?xml version="1.0" encoding="UTF-8"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetData>'+rowsXml+'</sheetData></worksheet>',
     'xl/sharedStrings.xml':'<?xml version="1.0" encoding="UTF-8"?><sst xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" count="'+ss.length+'" uniqueCount="'+ss.length+'">'+ss.map(function(s){return'<si><t xml:space="preserve">'+ex(s)+'</t></si>';}).join('')+'</sst>'
   };
-  // Build ZIP (STORE method - no compression)
-  var parts = [], cd = [], offset = 0;
-  function str2buf(s) {
-    var b = new Uint8Array(s.length*3), n = 0;
-    for(var i=0;i<s.length;i++){
-      var c=s.charCodeAt(i);
-      if(c<128){b[n++]=c;}
-      else if(c<2048){b[n++]=192|(c>>6);b[n++]=128|(c&63);}
-      else{b[n++]=224|(c>>12);b[n++]=128|((c>>6)&63);b[n++]=128|(c&63);}
-    }
-    return b.slice(0,n);
-  }
+  var parts=[],cd=[],offset=0;
+  function s2b(s){var b=new Uint8Array(s.length*3),n=0;for(var i=0;i<s.length;i++){var c=s.charCodeAt(i);if(c<128){b[n++]=c;}else if(c<2048){b[n++]=192|(c>>6);b[n++]=128|(c&63);}else{b[n++]=224|(c>>12);b[n++]=128|((c>>6)&63);b[n++]=128|(c&63);}}return b.slice(0,n);}
   function u16(v){return[v&255,(v>>8)&255];}
   function u32(v){return[v&255,(v>>8)&255,(v>>16)&255,(v>>24)&255];}
-  function crc32(buf){
-    var t=new Int32Array(256);
-    for(var i=0;i<256;i++){var c=i;for(var j=0;j<8;j++)c=c&1?(0xEDB88320^(c>>>1)):c>>>1;t[i]=c;}
-    var c=-1;for(var i=0;i<buf.length;i++)c=t[(c^buf[i])&255]^(c>>>8);
-    return(c^-1)>>>0;
-  }
-  Object.keys(files).forEach(function(name){
-    var nb = str2buf(name), db = str2buf(files[name]);
-    var crc = crc32(db), sz = db.length;
-    var lh = [80,75,3,4,20,0,0,0,0,0,0,0,0,0].concat(u32(crc)).concat(u32(sz)).concat(u32(sz)).concat(u16(nb.length)).concat(u16(0));
-    cd.push({name:nb,crc:crc,sz:sz,offset:offset});
+  function crc32(buf){var t=[];for(var i=0;i<256;i++){var c=i;for(var j=0;j<8;j++)c=c&1?(0xEDB88320^(c>>>1)):c>>>1;t[i]=c;}var c=-1;for(var i=0;i<buf.length;i++)c=t[(c^buf[i])&255]^(c>>>8);return(c^-1)>>>0;}
+  var names=Object.keys(files);
+  for(var fi=0;fi<names.length;fi++){
+    var name=names[fi],nb=s2b(name),db=s2b(files[name]);
+    var crc=crc32(db),sz=db.length;
+    var lh=[80,75,3,4,20,0,0,0,0,0,0,0,0,0].concat(u32(crc)).concat(u32(sz)).concat(u32(sz)).concat(u16(nb.length)).concat(u16(0));
+    cd.push({nb:nb,crc:crc,sz:sz,off:offset});
     parts.push(new Uint8Array(lh),nb,db);
     offset+=lh.length+nb.length+db.length;
-  });
-  var cdOffset=offset;
-  cd.forEach(function(e){
-    var r=[80,75,1,2,20,0,20,0,0,0,0,0,0,0,0,0].concat(u32(e.crc)).concat(u32(e.sz)).concat(u32(e.sz)).concat(u16(e.name.length)).concat(u16(0)).concat(u16(0)).concat(u16(0)).concat(u16(0)).concat(u16(0)).concat(u32(0)).concat(u32(e.offset));
-    parts.push(new Uint8Array(r),e.name);
-  });
-  var cdSize=offset-cdOffset+cd.reduce(function(a,e){return a+46+e.name.length;},0)-offset+offset;
-  // End of central directory
-  var cdSz=0;cd.forEach(function(e){cdSz+=46+e.name.length;});
-  var eocd=[80,75,5,6,0,0,0,0].concat(u16(cd.length)).concat(u16(cd.length)).concat(u32(cdSz)).concat(u32(cdOffset)).concat(u16(0));
+  }
+  var cdOff=offset,cdSz=0;
+  for(var i=0;i<cd.length;i++){
+    var e=cd[i];
+    var r=[80,75,1,2,20,0,20,0,0,0,0,0,0,0,0,0].concat(u32(e.crc)).concat(u32(e.sz)).concat(u32(e.sz)).concat(u16(e.nb.length)).concat(u16(0)).concat(u16(0)).concat(u16(0)).concat(u16(0)).concat(u16(0)).concat(u32(0)).concat(u32(e.off));
+    parts.push(new Uint8Array(r),e.nb);
+    cdSz+=46+e.nb.length;
+  }
+  var eocd=[80,75,5,6,0,0,0,0].concat([cd.length&255,(cd.length>>8)&255]).concat([cd.length&255,(cd.length>>8)&255]).concat(u32(cdSz)).concat(u32(cdOff)).concat([0,0]);
   parts.push(new Uint8Array(eocd));
-  var total=0;parts.forEach(function(p){total+=p.length;});
+  var total=0;for(var i=0;i<parts.length;i++)total+=parts[i].length;
   var out=new Uint8Array(total),pos=0;
-  parts.forEach(function(p){out.set(p,pos);pos+=p.length;});
+  for(var i=0;i<parts.length;i++){out.set(parts[i],pos);pos+=parts[i].length;}
   return out;
 }
-function downloadXLSX(rows, filename, sheetName) {
-  var buf = makeXLSX(rows, sheetName);
-  var blob = new Blob([buf], {type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
-  var a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = filename || 'data.xlsx';
-  a.click();
-  URL.revokeObjectURL(a.href);
+function downloadXLSX(rows,filename,sname){
+  var buf=makeXLSX(rows,sname);
+  var blob=new Blob([buf],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename||'data.xlsx';a.click();URL.revokeObjectURL(a.href);
 }
 
 </script>
